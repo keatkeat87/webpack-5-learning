@@ -1,2 +1,5 @@
-const a: string = "dada";
-console.log(a);
+const a = 'dada';
+const b = {
+  age: 11,
+  papa: 12,
+};

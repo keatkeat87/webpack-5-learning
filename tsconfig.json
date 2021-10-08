@@ -11,5 +11,5 @@
     // refer : https://stackoverflow.com/questions/53885107/typescript-cant-find-module-flatpickr-even-though-it-includes-typescript-types
     "moduleResolution": "node"
   },
-  "exclude": ["wwwroot/assets"]
+  "exclude": ["wwwroot/assets", "dist"]
 }
