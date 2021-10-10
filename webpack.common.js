@@ -7,6 +7,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 const glob = require('glob');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -144,4 +146,40 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js'],
   },
+  ...(isProduction
+    ? {
+        optimization: {
+          moduleIds: 'deterministic',
+          runtimeChunk: 'single',
+          minimize: true,
+          minimizer: [
+            new TerserPlugin({
+              terserOptions: {
+                format: {
+                  comments: false,
+                },
+              },
+              extractComments: false,
+            }),
+            ...(isProduction ? [new CssMinimizerPlugin()] : []),
+          ],
+          splitChunks: {
+            chunks: 'all',
+            cacheGroups: {
+              commons: {
+                name: 'commons',
+                chunks: 'all',
+                minChunks: 2,
+                minSize: 1,
+              },
+              vendors: {
+                name: 'vendors',
+                test: /[\\/]node_modules[\\/]/,
+                chunks: 'all',
+              },
+            },
+          },
+        },
+      }
+    : undefined),
 };
