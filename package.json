@@ -1,7 +1,7 @@
 {
   "name": "webpack-5-learning",
   "scripts": {
-    "start": "webpack --config webpack.config.js"
+    "start": "webpack --config webpack.config.js --node-env production"
   },
   "version": "1.0.0",
   "main": "index.js",
@@ -11,6 +11,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
+    "css-loader": "^6.3.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
@@ -19,7 +20,25 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-webpack-plugin": "^3.0.1",
+    "glob": "^7.2.0",
+    "mini-css-extract-plugin": "^2.4.2",
+    "postcss": "^8.3.9",
+    "postcss-font-magician": "^3.0.0",
+    "postcss-import": "^14.0.2",
+    "postcss-loader": "^6.1.1",
+    "postcss-preset-env": "^6.7.0",
     "prettier": "^2.4.1",
+    "prettier-plugin-tailwind": "^2.2.12",
+    "resolve-url-loader": "^4.0.0",
+    "sass": "^1.42.1",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.3.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recommended": "^5.0.0",
+    "stylelint-prettier": "^1.2.0",
+    "stylelint-scss": "^3.21.0",
+    "tailwindcss": "^2.2.16",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.3",
     "webpack": "^5.58.0",

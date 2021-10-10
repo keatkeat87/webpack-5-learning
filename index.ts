@@ -1,5 +1,3 @@
-const a = 'dada';
-const b = {
-  age: 11,
-  papa: 12,
-};
+import './index.scss';
+
+console.log('test');

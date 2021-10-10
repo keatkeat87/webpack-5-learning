@@ -1,0 +1,23 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+::placeholder {
+  color: red;
+}
+.image {
+  background-color: red;
+  @apply m-1;
+}
+@media (min-resolution: 2dppx) {
+  .image {
+    background-color: red;
+  }
+}
+
+p {
+  background-color: red;
+  span {
+    background-color: blue;
+  }
+}
