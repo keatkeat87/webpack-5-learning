@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const isProduction = process.env.NODE_ENV === 'production';
 const glob = require('glob');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -13,6 +14,8 @@ module.exports = {
   },
   output: {
     path: pathHelper.resolve(__dirname, 'dist'),
+    filename: isProduction ? '[name].[contenthash].js' : '[name].js',
+    assetModuleFilename: 'assets/[name]-[hash]-[ext][query]',
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -27,6 +30,12 @@ module.exports = {
           }),
         ]
       : []),
+    new HtmlWebpackPlugin({
+      title: 'Page Title',
+      filename: 'index.html', // 输出
+      template: 'index.html', // 输入
+      chunks: ['index'], // 要导入的 js,css (entry 的名字)
+    }),
   ],
   module: {
     rules: [
@@ -122,6 +131,17 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(svg|gif|jpe?g|png|webp)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
     ],
+  },
+  resolve: {
+    extensions: ['.ts', '.js'],
   },
 };
